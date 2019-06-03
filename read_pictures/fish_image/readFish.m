@@ -5,6 +5,7 @@
 % figure(2),imshow(I),title('fish01_gray');
 % imwrite(I,'fish01_grb2gray.jpg')
 
+<<<<<<< HEAD
 % positive_fish=imread('fish01_grb2gray.jpg');
 % negative_fish=255 - positive_fish;
 % figure(1),imshow(negative_fish);
@@ -32,3 +33,9 @@ gs=im2uint8(mat2gray(f));
 figure(1),imshow(gs);
 
 
+=======
+positive_fish=imread('fish01_grb2gray.jpg');
+negative_fish=255 - positive_fish;
+figure(1),imshow(negative_fish);
+imwrite(negative_fish,'fish01_negative.jpg');
+>>>>>>> 8496a2e17186e030710bb4e8328ba477f66a36f3
