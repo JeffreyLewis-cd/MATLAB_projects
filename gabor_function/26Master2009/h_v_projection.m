@@ -37,7 +37,7 @@ title('Horizontal Projection');
 
 %cut area of eyes
 % pic_1 = imcrop(I,[50,185,180,30]);
-pic_1 = imcrop(I,[75,120,115,20]);
+pic_1 = imcrop(I,[75,120,110,20]);
 figure,imshow(pic_1);
 
 
