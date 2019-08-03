@@ -6,6 +6,7 @@
 
 
 f=imread('check02_grb2gray.jpg');
- g2=imadjust(f,[0.5 0.75],[0 1]);
- figure(1),imshow(g2);
- imwrite(g2,'fish01_0.5-0.75.jpg');
+g2=adapthisteq(f, 'NumTiles', [2 2], 'ClipLimit', 0.05);
+
+imshow(g3);
+imshow(g2);
