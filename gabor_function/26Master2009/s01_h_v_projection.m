@@ -12,7 +12,7 @@ close all
 % imwrite(a_1,'andy_face.tiff');
 
 % I=imread('andy_face.tiff');
-I=imread('KA.HA4.32.tiff');
+I=imread('KA.HA4.32R.tiff');
 figure,imshow(I);
 % I=rgb2gray(I);
 [m, n]=size(I);
@@ -37,7 +37,7 @@ title('Horizontal Projection');
 
 %cut area of eyes
 % pic_1 = imcrop(I,[50,185,180,30]);
-pic_1 = imcrop(I,[75,116,110,26]);
+pic_1 = imcrop(I,[76,118,110,20]);
 figure,imshow(pic_1);
 
 
