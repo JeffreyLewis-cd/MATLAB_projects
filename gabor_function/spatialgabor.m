@@ -32,10 +32,9 @@ end
  
 im = double(im);
 [rows,cols] = size(im);
-newim = zeros(rows,cols);
+newim = zeros(rows,cols);preference
  
-
-%??????????
+%构建奇数和偶数滤波器
 sigmax = wavelength*kx;
 sigmay = wavelength*ky;
  
@@ -50,12 +49,12 @@ oddFilter = exp(-(x.^2/sigmax^2+y.^2/sigmay^2)/2)...
 evenFilter = imrotate(evenFilter,angle,'bilinear');
 oddFilter = imrotate(oddFilter,angle,'bilinear');
  
-%?????
+%制作滤波器
 Eim = filter2(evenFilter,im);
 Oim = filter2(oddFilter,im);
 Aim = sqrt(Eim.^2 + Oim.^2);
  
-if showfilter %??????????
+if showfilter %展示滤波器以便于检查
     figure(1),imshow(evenFilter,[]);title('filter');
 end
 
