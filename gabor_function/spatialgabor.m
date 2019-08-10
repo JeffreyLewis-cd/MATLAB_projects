@@ -25,7 +25,7 @@
 %            Eim - Result from filtering with the even (cosine) Gabor filter
 %            Oim - Result from filtering with the odd (sine) Gabor filter
 %            Aim - Amplitude image = sqrt(Eim.^2 + Oim.^2)
-function[Eim,Oim,Aim] = spatialgabor(im,wavelength,angle,kx,ky,showfilter)
+function[Eim,Oim,Aim,evenFilter] = spatialgabor(im,wavelength,angle,kx,ky,showfilter)
 if nargin == 5
     showfilter = 0;
 end
@@ -34,6 +34,7 @@ im = double(im);
 [rows,cols] = size(im);
 newim = zeros(rows,cols);
  
+
 %??????????
 sigmax = wavelength*kx;
 sigmay = wavelength*ky;
@@ -57,3 +58,15 @@ Aim = sqrt(Eim.^2 + Oim.^2);
 if showfilter %??????????
     figure(1),imshow(evenFilter,[]);title('filter');
 end
+
+
+
+
+
+
+
+
+
+
+
+
