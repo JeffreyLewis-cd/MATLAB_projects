@@ -57,6 +57,7 @@ for i = 1:u
     
     for j = 1:v
         tetav = ((j-1)/v)*pi;
+        fprintf('tetav=%f\n',tetav);
         gFilter = zeros(m,n);
         
         for x = 1:m
