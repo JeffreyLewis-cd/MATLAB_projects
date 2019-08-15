@@ -1,4 +1,10 @@
-img = imread('KA.HA4.32Resize.tiff');
 close all;
-gaborArray = gaborFilterBank(5,8,39,39);  % Generates the Gabor filter bank
-featureVector = gaborFeatures(img,gaborArray,4,4);   % Extracts Gabor feature vector, 'featureVector', from the image, 'img'.
+
+% img = imread('KA.HA4.32Resize.tiff');
+% gaborArray = gaborFilterBank(5,8,39,39);  % Generates the Gabor filter bank
+% featureVector1 = gaborFeatures(img,gaborArray,4,4);   % Extracts Gabor feature vector, 'featureVector', from the image, 'img'.
+
+andyColor=imread('andy.jpg');
+img2=rgb2gray(andyColor);
+gaborArray = gaborFilterBank(5,8,39,39);
+featureVector2=gaborFeatures(img2,gaborArray,4,4);
