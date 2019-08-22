@@ -1,2 +1,2 @@
 img = imread('andy_face.tiff');
-imgHu = hu_moments(img);
+hu_moments_vector = hu_moments(img);
