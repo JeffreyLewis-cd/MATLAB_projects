@@ -1,7 +1,10 @@
+clear all;
 detector=vision.CascadeObjectDetector('LeftEyeCART');
 input_image=imread('KA.AN1.39.tiff');
 figure();imshow(input_image);title('原图');
 gauss_image=imgaussfilt(input_image,1);
+% figure();imshow(gauss_image);title('gauss_image');  %JF
+
 eyes=step(detector,gauss_image);
 
 size_eyes = size(eyes);%眼睛的框
@@ -9,9 +12,11 @@ hold on;
 for i =1:size_eyes(1);2
     eyes_final=eyes(i,1:2);%x,y
     image = imcrop(gauss_image,eyes(i,:));
+%    figure();imshow(image);title('imcrop_gauss_image');  %JF
+    
     rectangle('Position',eyes(i,:),'edgeColor','b');
  
-%     image = rgb2gray(image);
+%     image = rgb2gray(image);  %JF
     image = im2double(image);
     [grad_x,grad_y] = gradient(image);%计算梯度
     
