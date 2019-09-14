@@ -1,6 +1,6 @@
 clear;
-stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KA\';
-stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KA_face_only\';
+stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL\';
+stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL_face_only\';
 dirImagePathList = dir(strcat(stImageFilePath,'*.tiff'));        %∂¡»°∏√ƒø¬ºœ¬»´≤øÕº∆¨µƒ¬∑æ∂£®◊÷∑˚¥Æ∏Ò Ω£©
 iImageNum        = length(dirImagePathList);                    %ªÒ»°Õº∆¨µƒ◊‹ ˝¡ø
 if iImageNum > 0                                                %≈˙¡ø∂¡»ÎÕº∆¨£¨Ω¯––ŒÂπŸºÏúy£¨‘Ÿ≈˙¡øºÏúy
@@ -9,7 +9,7 @@ if iImageNum > 0                                                %≈˙¡ø∂¡»ÎÕº∆¨£¨Ω
         stImagePath   = dirImagePathList(i).name;
         mImageCurrent = imread(strcat(stImageFilePath,stImagePath));
         mFaceResult   = face_segment(mImageCurrent);
-        mFaceResult = imresize(mFaceResult,[96,96]);
+        mFaceResult = 
         imwrite(mFaceResult,strcat(stImageSavePath,iSaveNum,'.bmp')); 
     end 
 end
