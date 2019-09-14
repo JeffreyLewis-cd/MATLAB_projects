@@ -1,8 +1,9 @@
-function imageFinal = imageRotate(mImageSrc)
 
-clear;
+function imageFinal = imageRotate(mImageSrc,figureNum)
+
 detector=vision.CascadeObjectDetector('LeftEyeCART');
 input_image=mImageSrc;
+figure(figureNum);
 subplot(1,2,1);
 imshow(input_image);title('ԭͼ');
 gauss_image=imgaussfilt(input_image,1);
@@ -89,17 +90,17 @@ for i =1:size_eyes(1);2
     p(i,2)=Y+eyes_final(2);
 end
 
-deltaY =p(1,2) - p(2,2);
-
-if(deltaY > 2)
-   rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
-elseif (deltaY < -2)
-   rotateAngle = -atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');  
-else
-    imageFinal = input_image;
-end
-subplot(1,2,2);
-imshow(imageFinal);title(rotateAngle);
-end
+    deltaY =p(1,2) - p(2,2);
+        if(deltaY > 2)
+           rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
+           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
+        elseif(deltaY < -2)
+           rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
+           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
+        else
+           rotateAngle=0;
+           imageFinal = input_image;
+        end
+    subplot(1,2,2);
+    imshow(imageFinal);title(['This is figure for a=' num2str(rotateAngle)]);
+    end
