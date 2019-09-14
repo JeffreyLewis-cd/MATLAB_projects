@@ -1,7 +1,7 @@
 clear;
-stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\andy\';
-stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\andy_face_only\';
-dirImagePathList = dir(strcat(stImageFilePath,'*.jpg'));        %¶ÁÈ¡¸ÃÄ¿Â¼ÏÂÈ«²¿Í¼Æ¬µÄÂ·¾¶£¨×Ö·û´®¸ñÊ½£©
+stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL_sets\KL_rotate\';
+stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL_sets\KL_face_only\';
+dirImagePathList = dir(strcat(stImageFilePath,'*.bmp'));        %¶ÁÈ¡¸ÃÄ¿Â¼ÏÂÈ«²¿Í¼Æ¬µÄÂ·¾¶£¨×Ö·û´®¸ñÊ½£©
 iImageNum        = length(dirImagePathList);                    %»ñÈ¡Í¼Æ¬µÄ×ÜÊýÁ¿
 if iImageNum > 0                                                %ÅúÁ¿¶ÁÈëÍ¼Æ¬£¬½øÐÐÎå¹Ù¼ìœy£¬ÔÙÅúÁ¿¼ìœy
     for i = 1 : iImageNum
@@ -10,7 +10,7 @@ if iImageNum > 0                                                %ÅúÁ¿¶ÁÈëÍ¼Æ¬£¬½
         mImageCurrent = imread(strcat(stImageFilePath,stImagePath));
         
         mFaceResult   = face_segment(mImageCurrent);
-        mFaceResult = imresize(mFaceResult,[96,96]);
-        imwrite(mFaceResult,strcat(stImageSavePath,iSaveNum,'.bmp')); 
+        mFaceResult = histeq(imresize(mFaceResult,[96,96])); %Í¼Ïñ³ß´çËõ·Å£¬²¢ÇÒÖ±·½Í¼¾ùºâ»¯
+        imwrite(mFaceResult,strcat(stImageSavePath,dirImagePathList(i).name,'.bmp')); 
     end 
 end

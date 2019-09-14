@@ -1,11 +1,11 @@
 
-function imageFinal = imageRotate(mImageSrc,figureNum)
+function imageFinal = imageRotate(mImageSrc,figureNum,imageName)
 
 detector=vision.CascadeObjectDetector('LeftEyeCART');
 input_image=mImageSrc;
 figure(figureNum);
 subplot(1,2,1);
-imshow(input_image);title('原图');
+imshow(input_image);title(['原图:',imageName]);
 gauss_image=imgaussfilt(input_image,1);
 % figure();imshow(gauss_image);title('gauss_image');  %JF
 
@@ -90,17 +90,24 @@ for i =1:size_eyes(1);2
     p(i,2)=Y+eyes_final(2);
 end
 
-    deltaY =p(1,2) - p(2,2);
-        if(deltaY > 2 && deltaY < 30)
-           rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
-        elseif(deltaY > -30 && deltaY < -2)
-           rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
-        else
-           rotateAngle=0;
-           imageFinal = input_image;
-        end
+
+% 准备旋转
+deltaY =p(1,2) - p(2,2);
+if(deltaY > 2 && deltaY < 30)
+    rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
+    imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
+    
     subplot(1,2,2);
     imshow(imageFinal);title(['rotateAngle=' num2str(rotateAngle)]);
-    end
+elseif(deltaY > -30 && deltaY < -2)
+    rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
+    imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
+    
+    subplot(1,2,2);
+    imshow(imageFinal);title(['rotateAngle=' num2str(rotateAngle)]);
+else
+    imageFinal = input_image;
+    close(figure(figureNum));
+end
+
+end

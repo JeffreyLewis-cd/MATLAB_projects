@@ -1,7 +1,7 @@
 
 
-stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KA_sets\KA\';
-stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KA_sets\KA_rotate\';
+stImageFilePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL_sets\KL\';
+stImageSavePath  = 'D:\backupData\JiangFanBackup_Tech\videoImage\master\MATLAB_projects\40_periodical_2013_HuMin\KL_sets\KL_rotate\';
 dirImagePathList = dir(strcat(stImageFilePath,'*.tiff'));        %∂¡»°∏√ƒø¬ºœ¬»´≤øÕº∆¨µƒ¬∑æ∂£®◊÷∑˚¥Æ∏Ò Ω£©
 iImageNum        = length(dirImagePathList);                    %ªÒ»°Õº∆¨µƒ◊‹ ˝¡ø
 if iImageNum > 0                                                %≈˙¡ø∂¡»ÎÕº∆¨£¨Ω¯––ŒÂπŸºÏúy£¨‘Ÿ≈˙¡øºÏúy
@@ -10,8 +10,8 @@ if iImageNum > 0                                                %≈˙¡ø∂¡»ÎÕº∆¨£¨Ω
         stImagePath   = dirImagePathList(i).name;
         mImageCurrent = imread(strcat(stImageFilePath,stImagePath));
         
-        mFaceResult   = imageRotate(mImageCurrent,i);
+        mFaceResult   = imageRotate(mImageCurrent,i,dirImagePathList(i).name);
      
-        imwrite(mFaceResult,strcat(stImageSavePath,iSaveNum,'.bmp')); 
+        imwrite(mFaceResult,strcat(stImageSavePath,dirImagePathList(i).name,'.bmp')); 
     end 
 end
