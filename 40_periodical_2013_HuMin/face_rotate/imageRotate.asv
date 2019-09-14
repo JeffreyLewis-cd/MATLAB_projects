@@ -91,16 +91,18 @@ for i =1:size_eyes(1);2
 end
 
     deltaY =p(1,2) - p(2,2);
-        if(deltaY > 2)
+        if(deltaY > 2 && deltaY < 30)
            rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
            imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
-        elseif(deltaY < -2)
+           subplot(1,2,2);
+           imshow(imageFinal);title(['This is figure for a=' num2str(rotateAngle)]);
+        elseif(deltaY > -30 &&  deltaY < -2)
            rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop'); 
+           imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
+           subplot(1,2,2);
+           imshow(imageFinal);title(['rotateAngle =' num2str(rotateAngle)]);
         else
-           rotateAngle=0;
            imageFinal = input_image;
         end
-    subplot(1,2,2);
-    imshow(imageFinal);title(['This is figure for a=' num2str(rotateAngle)]);
+
     end
