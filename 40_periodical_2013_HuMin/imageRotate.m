@@ -1,6 +1,8 @@
+function imageFinal = imageRotate(mImageSrc)
+
 clear;
 detector=vision.CascadeObjectDetector('LeftEyeCART');
-input_image=imread('.\KA\KA.AN3.41.tiff');
+input_image=mImageSrc;
 subplot(1,2,1);
 imshow(input_image);title('ԭͼ');
 gauss_image=imgaussfilt(input_image,1);
@@ -94,15 +96,10 @@ if(deltaY > 2)
    imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
 elseif (deltaY < -2)
    rotateAngle = -atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');   
+   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');  
+else
+    imageFinal = input_image;
 end
 subplot(1,2,2);
 imshow(imageFinal);title(rotateAngle);
-
-
-
-
-
-
-
-
+end

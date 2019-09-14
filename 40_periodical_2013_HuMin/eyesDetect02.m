@@ -1,4 +1,4 @@
-clear all;
+clear;
 I= imread('andy.jpg');
 I=rgb2gray(I);
 EyeDetect = vision.CascadeObjectDetector('EyePairBig');

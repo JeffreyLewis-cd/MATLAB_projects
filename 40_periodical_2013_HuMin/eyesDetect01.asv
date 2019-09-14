@@ -1,8 +1,7 @@
 clear;
 detector=vision.CascadeObjectDetector('LeftEyeCART');
-input_image=imread('.\KA\KA.AN3.41.tiff');
-subplot(1,2,1);
-imshow(input_image);title('ԭͼ');
+input_image=imread('.\KA\KA.HA4.32.tiff');
+figure(1);imshow(input_image);title('ԭͼ');
 gauss_image=imgaussfilt(input_image,1);
 % figure();imshow(gauss_image);title('gauss_image');  %JF
 
@@ -90,14 +89,10 @@ end
 deltaY =p(1,2) - p(2,2);
 
 if(deltaY > 2)
-   rotateAngle = atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');
-elseif (deltaY < -2)
-   rotateAngle = -atand((p(1,2) - p(2,2)) / (p(1,1) - p(2,1)));
-   imageFinal = imrotate(input_image,rotateAngle, 'bilinear','crop');   
+   rotateAngle = atand(deltaY / p(1,1) - p(2,1));
+ image = imrotate(image, '
 end
-subplot(1,2,2);
-imshow(imageFinal);title(rotateAngle);
+
 
 
 
