@@ -7,4 +7,5 @@ close all;
 andyColor=imread('andy.jpg');
 img2=rgb2gray(andyColor);
 gaborArray = gaborFilterBank(5,8,39,39);
-featureVector2=gaborFeatures(img2,gaborArray,4,4);
+featureVector1=gaborFeatures(img2,gaborArray,4,4);
+featureVector2=gaborFeaturesArray(img2,gaborArray,4,4);
