@@ -1,0 +1,1 @@
+% 5 directions combined face image
