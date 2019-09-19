@@ -12,28 +12,43 @@ readImage=imread('KA.AN1.39.tiff');
 gaborArray = gaborFilterBank(5,8,39,39);
 featureVector2=gaborFeaturesArray(readImage,gaborArray,4,4);
 
+% 同一尺度，不同方向，数据累加
 [u,v] = size(featureVector2);
 fvArray = featureVector2;
-featureDirectionCombined = cell(u,1);
+featureAccumulate = cell(u,1);
 for i = 1:u
    [a,b] = size(readImage);
-   featureDirectionCombined{i,1} = zeros(a,b);
+   featureAccumulate{i,1} = zeros(a,b);
     for j = 1:v
-      featureDirectionCombined{i,1} =  featureDirectionCombined{i,1} + fvArray{i,j};
+      featureAccumulate{i,1} =  featureAccumulate{i,1} + fvArray{i,j};
     end
 end
 
-[c,d] = size(featureDirectionCombined);
+% 计算平均值
+[c,d] = size(featureAccumulate);
 figure('NumberTitle','Off','Name','gabor row combined image');
-feaDireCombinedAverage = cell(c,1);
-feaDireCombinedBanary = cell(c,1);
+featureAverage = cell(c,1);
+
 for i = 1:c
     for j = 1:d  
-        feaDireCombinedAverage{i,1}=featureDirectionCombined{i,j}/8;
-%         subplot(c,2,(i-1)*2+1)  
-%         imshow(featureDirectionCombined{i,j},[]);
-        subplot(c,2,(i-1)*2+2)   
-        imshow(feaDireCombinedAverage{i,1},[]);
+        featureAverage{i,1}=featureAccumulate{i,j}/8;
+        subplot(c,1,i)   
+        imshow(featureAverage{i,1},[]);
         title({  ['c = ',num2str(i), ',d = ',num2str(j)] } );
+    end
+end
+
+%40个特征，二值化处理
+figure('NumberTitle','Off','Name','40个特征，二值化处理');
+[u,v] = size(featureVector2);
+fvArray = featureVector2;
+featureBinary = cell(u,v);
+for i = 1:u
+    for j = 1:v
+      featureBinary{i,j} =  imbinarize(fvArray{i,j},featureAverage{i,1});      
+      
+      subplot(u,v,(i-1)*v+j)    
+      imshow(featureBinary{i,j},[]);
+      title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
     end
 end
