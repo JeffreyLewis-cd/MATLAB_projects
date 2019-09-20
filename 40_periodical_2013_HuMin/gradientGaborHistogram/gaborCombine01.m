@@ -52,3 +52,18 @@ for i = 1:u
       title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
     end
 end
+
+%40个特征，二值化图像，同一尺度，不同方向融合
+figure('NumberTitle','Off','Name','40个特征，二值化图像，同一尺度，不同方向融合');
+[m,n] = size(featureBinary);
+feaBinaryCombine = cell(m,1);
+for i = 1:m
+    [j,k]=size(featureBinary{i,1});
+    feaBinaryCombine{i,1}=zeros(j,k);
+    for j = 1:n
+      feaBinaryCombine{i,1} =feaBinaryCombine{i,1} + featureBinary{i,j};      
+    end          
+      subplot(m,1,i)    
+      imshow(feaBinaryCombine{i,1},[]);
+      title({  ['m = ',num2str(i), ',n = ',num2str(j)] } );
+end
