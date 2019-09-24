@@ -88,14 +88,16 @@ end
 %% Show filtered images (Please comment this section if not needed!)
 
 % Show real parts of Gabor-filtered images
-figure('NumberTitle','Off','Name','Real parts of filted image');
-for i = 1:u
-    for j = 1:v        
-        subplot(u,v,(i-1)*v+j)    
-        imshow(real(gaborResult{i,j}),[]);
-        title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
-    end
-end
+% figure('NumberTitle','Off','Name','Real parts of filted image');
+% for i = 1:u
+%     for j = 1:v        
+%         subplot(u,v,(i-1)*v+j)    
+%         imshow(real(gaborResult{i,j}),[]);
+%         title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
+%     end
+% end
+
+
 % 
 % Show magnitudes of Gabor-filtered images
 figure('NumberTitle','Off','Name','Magnitudes of filted image');

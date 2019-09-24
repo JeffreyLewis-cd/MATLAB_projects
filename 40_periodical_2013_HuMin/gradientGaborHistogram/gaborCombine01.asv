@@ -73,23 +73,24 @@ figure('NumberTitle','Off','Name','梯度方向特征融合');
 [p,q] = size(feaBinaryCombine);
 feaBinaryGradient = cell(p,1);
 for i = 1:p
-    comItem =feaBinaryCombine{i,1};
-    [r,s]=size(comItem);
+    [r,s]=size(feaBinaryCombine{i,1});
     feaBinaryGradient{i,1} = zeros(r,s);
+    comItem =feaBinaryCombine{i,1};
     graItem=zeros(r,s);
     for j = 1:r
         for k = 1:s
-           if(comItem(j,k)<=3)
-               graItem(j,k)=comItem(j,k) + 4;
+
+           if(comItem{j,k}<=3)
+               graItem{j,k}=comItem{j,k} + 4;
            end
            
-           if(comItem(j,k)>=4)
-               graItem(j,k)=comItem(j,k) - 4;
+           if(comItem{j,k}>=4)
+               graItem{j,k}=comItem{j,k} - 4;
            end
         end
   
     end 
-      feaBinaryGradient{i,1}=graItem;
+       feaBinaryGradient{i,1}=graItem;
       subplot(p,1,i)    
       imshow(feaBinaryGradient{i,1},[]);
       title({  ['m = ',num2str(i), ',n = ',num2str(j)] } );

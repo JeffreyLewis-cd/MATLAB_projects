@@ -76,21 +76,21 @@ end
 %% Show Gabor filters (Please comment this section if not needed!)
 
 % Show magnitudes of Gabor filters:
-figure('NumberTitle','Off','Name','Magnitudes of Gabor filters');
-for i = 1:u
-    for j = 1:v        
-        subplot(u,v,(i-1)*v+j);        
-        imshow(abs(gaborArray{i,j}),[]);
-        title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
-    end
-end
+% figure('NumberTitle','Off','Name','Magnitudes of Gabor filters');
+% for i = 1:u
+%     for j = 1:v        
+%         subplot(u,v,(i-1)*v+j);        
+%         imshow(abs(gaborArray{i,j}),[]);
+%         title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
+%     end
+% end
 
 % Show real parts of Gabor filters:
-figure('NumberTitle','Off','Name','Real parts of Gabor filters');
-for i = 1:u
-    for j = 1:v        
-        subplot(u,v,(i-1)*v+j);   
-        imshow(real(gaborArray{i,j}),[]);       
-        title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
-    end
-end
+% figure('NumberTitle','Off','Name','Real parts of Gabor filters');
+% for i = 1:u
+%     for j = 1:v        
+%         subplot(u,v,(i-1)*v+j);   
+%         imshow(real(gaborArray{i,j}),[]);       
+%         title({  ['u = ',num2str(i), ',v = ',num2str(j)] } );
+%     end
+% end
