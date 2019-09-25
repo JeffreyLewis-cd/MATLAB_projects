@@ -80,11 +80,11 @@ for i = 1:p
     for j = 1:r
         for k = 1:s
            if(comItem(j,k)<=3)
-               graItem(j,k)=comItem(j,k) + 4;
+               graItem(j,k)=0;
            end
            
            if(comItem(j,k)>=4)
-               graItem(j,k)=comItem(j,k) - 4;
+               graItem(j,k)=1;
            end
         end
   
