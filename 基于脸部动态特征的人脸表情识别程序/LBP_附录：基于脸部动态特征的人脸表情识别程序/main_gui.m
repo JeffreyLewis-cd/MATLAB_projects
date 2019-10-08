@@ -73,7 +73,7 @@ function varargout = main_gui_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- Executes on button press in pushbutton1.
+% --- Executes on button press in pushbutton1.读取一张待识别的图片
 function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -87,7 +87,7 @@ subplot(1,3,1),imshow(cc);
 set(handles.text5,'string',str);
 
 
-% --- Executes on button press in pushbutton3.
+% --- Executes on button press in pushbutton3.关闭图形界面
 function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -97,7 +97,7 @@ close(gcf);
 
 
 
-% --- Executes on button press in pushbutton4.
+% --- Executes on button press in pushbutton4.表情识别
 function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
