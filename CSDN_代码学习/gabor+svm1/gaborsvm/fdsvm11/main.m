@@ -2,6 +2,7 @@
 % Date : 12.26.2010
 % Author  : Omid Sakhi
 % http://www.facedetectioncode.com
+% 开始学习gabor + svm 代码
 
 clear all;
 close all;
